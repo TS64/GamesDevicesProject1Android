@@ -3,6 +3,7 @@
 
 USING_NS_CC;
 
+<<<<<<< HEAD
 typedef struct tagResource
 {
 	cocos2d::Size size;
@@ -18,6 +19,8 @@ static Resource largeResource = { cocos2d::Size(1920, 1200), "shd" };
 
 static cocos2d::Size designResolutionSize = smallResource.size;
 
+=======
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
 AppDelegate::AppDelegate() {
 
 }
@@ -48,6 +51,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
+<<<<<<< HEAD
 
     if(!glview) {
         glview = GLViewImpl::create("My Game");
@@ -83,6 +87,17 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	searchPath.push_back("data");
 	fileUtils->setSearchPaths(searchPath);
 
+=======
+    if(!glview) {
+        glview = GLViewImpl::create("My Game");
+		glview->setFrameSize(640, 480);
+        director->setOpenGLView(glview);
+    }
+
+    // turn on display FPS
+    //director->setDisplayStats(true);
+
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 

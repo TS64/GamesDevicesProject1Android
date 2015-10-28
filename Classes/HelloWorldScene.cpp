@@ -73,7 +73,10 @@ bool HelloWorld::init()
     this->addChild(sprite, 0);
     
     return true;
+<<<<<<< HEAD
 	this->addChild(label, 1);
+=======
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
 }
 
 
