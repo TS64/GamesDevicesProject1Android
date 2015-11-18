@@ -36,20 +36,29 @@ bool GameOver::init()
 
     // add a "close" icon to exit the progress. it's an autorelease object
 
+<<<<<<< HEAD
+=======
     auto closeItem = MenuItemImage::create(
                                            "CloseNormal.png",
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(GameOver::menuCloseCallback, this));
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
 	auto retryItem =
 		MenuItemImage::create("GameOverScreen/RetryButton.png",
 		"GameOverScreen/RetryButton.png",
 		CC_CALLBACK_1(GameOver::activateGameScene, this));
     
+<<<<<<< HEAD
+	retryItem->setPosition(Vec2(origin.x + visibleSize.width/2, visibleSize.height - 50 - retryItem->getContentSize().height));
+    // create menu, it's an autorelease object
+    auto menu = Menu::create(retryItem, NULL);
+=======
 	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
                                 origin.y + closeItem->getContentSize().height/2));
 	retryItem->setPosition(Vec2(origin.x + visibleSize.width/2, visibleSize.height - 50 - retryItem->getContentSize().height));
     // create menu, it's an autorelease object
     auto menu = Menu::create(closeItem, retryItem, NULL);
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
@@ -73,6 +82,8 @@ void GameOver::activateMainMenuScene(Ref *pSender)
 	auto scene = MainMenu::createScene();
 	Director::getInstance()->replaceScene(scene);
 }
+<<<<<<< HEAD
+=======
 
 void GameOver::menuCloseCallback(Ref* pSender)
 {
@@ -82,3 +93,4 @@ void GameOver::menuCloseCallback(Ref* pSender)
     exit(0);
 #endif
 }
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062

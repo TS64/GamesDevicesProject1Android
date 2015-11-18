@@ -15,7 +15,10 @@ public:
     virtual bool init();
     
     // a selector callback
+<<<<<<< HEAD
+=======
     void menuCloseCallback(cocos2d::Ref* pSender);
+>>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
 
 	void activateGameScene(Ref *pSender);
 
