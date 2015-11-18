@@ -20,6 +20,18 @@ public:
 	void activatePauseScene(Ref *pSender);
 
 	void activateGameOverScene(Ref *pSender);
+
+	//cocos2d::Animate HandleAnimations();
+
+	void Update();
+
+	cocos2d::Vec2 playerPos, mummyPos, chestPos;
+
+	cocos2d::Rect playerRect;
+
+	cocos2d::Vec2 enemyPos[4];
+
+	int currentFrame;
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameScene);
