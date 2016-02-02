@@ -3,9 +3,7 @@
 
 USING_NS_CC;
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 typedef struct tagResource
 {
 	cocos2d::Size size;
@@ -13,7 +11,7 @@ typedef struct tagResource
 } Resource;
 
 // 800x480 = Normal screen, WVGA 
-static Resource smallResource = { cocos2d::Size(800, 480), "sd" };
+static Resource smallResource = { cocos2d::Size(800, 600), "sd" };
 // 1280x800 = Extra large screen, WXGA, medium density screen (160)
 static Resource mediumResource = { cocos2d::Size(1280, 800), "hd" };
 // 1900x1200 = WUXGA, Devices with such as Nexus 7, Nvidia Shield.
@@ -21,9 +19,6 @@ static Resource largeResource = { cocos2d::Size(1920, 1200), "shd" };
 
 static cocos2d::Size designResolutionSize = smallResource.size;
 
-=======
->>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
->>>>>>> 74f70ad2e7e511ee9da6b306c9310e5294db5989
 AppDelegate::AppDelegate() {
 
 }
@@ -54,9 +49,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // initialize director
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
 
     if(!glview) {
         glview = GLViewImpl::create("My Game");
@@ -91,9 +84,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	director->setContentScaleFactor(scaleFactor);
 	searchPath.push_back("data");
 	fileUtils->setSearchPaths(searchPath);
+	// Create the GameData singleton.
+	m_ptr = GameData::sharedGameData();
+	// Create the level loader object to load general game data.
+	LevelLoader loader("data/GeneralGameData.json");
 
-=======
->>>>>>> 74f70ad2e7e511ee9da6b306c9310e5294db5989
+
     if(!glview) {
         glview = GLViewImpl::create("My Game");
 		glview->setFrameSize(800, 600);
@@ -103,10 +99,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // turn on display FPS
     //director->setDisplayStats(true);
 
-<<<<<<< HEAD
-=======
->>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
->>>>>>> 74f70ad2e7e511ee9da6b306c9310e5294db5989
+
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 

@@ -3,6 +3,8 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "ConfirmCloseScene.h"
+#include "OptionsScene.h"
 #include "2d\CCSprite.h"
 
 class MainMenu : public cocos2d::Layer
@@ -18,6 +20,8 @@ public:
     //void menuCloseCallback(cocos2d::Ref* pSender);
 
 	void activateGameScene(Ref *pSender);
+
+	void closeGame(Ref *pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(MainMenu);

@@ -1,121 +1,32 @@
 {   
      "global_settings" : 
      {           
-        "texture_background_file" :  "GameScreen/Background.png",
-        "texture_atlas_image_file" :  "GameScreen/GameAtlas.png",
-        "texture_atlas_plist_file" :  "GameScreen/GameAtlas.plist",
-        "tower" : 
-        {
-            "tower_base_file" :  "TowerBase.png",
-            "tower_gun_file" :  "Tower.png",
-            "tower_width" :  62,
-            "tower_height" : 53,
-            "firing_delay" :  500,
-            "tower_rotation_speed" :  3,
-            "tower_rotation_origin" :  
-            {
-                "x" :  31,
-                "y" :  55
-            },
-            "number_of_tower_bases" :  3,
-            "tower_bases": [
-             {
-                "x": 410,
-                "y": 47
-             },
-             {
-                "x": 365,
-                "y": 184  
-             },
-             {
-                "x": 430,
-                "y": 269
-            }      
-           ]    
-        },
-        "projectile" : 
-        {
-            "projectile_file" :  "Hive.png",
-            "projectile_centre" :  
-            {
-                "x" :  6,
-                "y" :  9
-            },
-            "max_num_projectiles" :  20,
-            "time_to_live" :  2,
-            "velocity" :  5
-        },
-        "ai": 
-        {            
-            "ai_image_file" : "GameScreen/BearWalking.png",  
-            "ai_plist_file" :  "GameScreen/BearWalking.plist",            
-            "max_num_ai" :  24,                        
-            "ai_spawn_interval" : 1,
-            "ai_scale" :  0.3,
-            "ai_velocity" :  0.1,   
-            "ai_time_delay" :  1,            
-            "ai_start_position" : 
-            {
-                "x": -25,
-                "y": 470
-            },                            
-            "ai_walking_spritesheet" : 
-            {
-                "rows": 9,
-                "columns": 4,
-                "width": 232,
-                "height": 282  
-            },            
-            "ai_waypoints" : [                                                    
-            {
-                "x": 63,
-                "y": 455  
-            },
-            {
-                "x": 150,
-                "y": 424  
-            },
-            {
-                "x": 230,
-                "y": 384  
-            },
-            {
-                "x": 300,
-                "y": 333  
-            },
-            {
-                "x": 360,
-                "y": 295  
-            },
-            {
-                "x": 424,
-                "y": 207  
-            },
-            {
-                "x": 505,
-                "y": 255  
-            },
-            {
-                "x": 603,
-                "y": 234 
-            },
-            {
-                "x": 638,
-                "y": 329 
-            },
-            {
-                "x": 684,
-                "y": 400 
-            },
-            {
-                "x": 732,
-                "y": 455 
-            },
-            {
-                "x": 763,
-                "y": 500 
-            }
-            ]              
-        }                                                        
-    } 
+        "chest_texture_file" :  "GameScreen/Chest.png",
+        "background_texture_file" :  "GameScreen/Room1bg.png",
+        "circle_pad_outline_texture_file" :  "GameScreen/CirclePadOutline.png",
+"zombie_up_one_texture_file" :  "GameScreen/ZombieUp1.png",
+"zombie_up_two_texture_file" :  "GameScreen/ZombieUp2.png",
+"zombie_up_three_texture_file" :  "GameScreen/ZombieUp3.png",
+"zombie_up_four_texture_file" :  "GameScreen/ZombieUp4.png",
+"zombie_right_one_texture_file" :  "GameScreen/ZombieRight1.png",
+"zombie_right_two_texture_file" :  "GameScreen/ZombieRight2.png",
+"zombie_right_three_texture_file" :  "GameScreen/ZombieRight3.png",
+"zombie_right_four_texture_file" :  "GameScreen/ZombieRight4.png",
+"zombie_down_one_texture_file" :  "GameScreen/ZombieDown1.png",
+"zombie_down_two_texture_file" :  "GameScreen/ZombieDown2.png",
+"zombie_down_three_texture_file" :  "GameScreen/ZombieDown3.png",
+"zombie_down_four_texture_file" :  "GameScreen/ZombieDown4.png",
+"zombie_left_one_texture_file" :  "GameScreen/ZombieLeft1.png",
+"zombie_left_two_texture_file" :  "GameScreen/ZombieLeft2.png",
+"zombie_left_three_texture_file" :  "GameScreen/ZombieLeft3.png",
+"zombie_left_four_texture_file" :  "GameScreen/ZombieLeft4.png",
+"player_one_texture_file" :  "GameScreen/PlayerSprite1.png",
+"player_two_texture_file" :  "GameScreen/PlayerSprite2.png",
+"player_three_texture_file" :  "GameScreen/PlayerSprite3.png",
+"player_four_texture_file" :  "GameScreen/PlayerSprite2.png",
+"player2_one_texture_file" :  "GameScreen/Player2Sprite1.png",
+"player2_two_texture_file" :  "GameScreen/Player2Sprite2.png",
+"player2_three_texture_file" :  "GameScreen/Player2Sprite3.png",
+"player2_four_texture_file" :  "GameScreen/Player2Sprite2.png"                    
+     } 
 }

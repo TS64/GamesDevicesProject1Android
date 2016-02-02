@@ -39,6 +39,10 @@ bool MainMenu::init()
 		MenuItemImage::create("MainMenuScreen/StartGameButton.png",
 		"MainMenuScreen/StartGameButton.png",
 		CC_CALLBACK_1(MainMenu::activateGameScene, this));
+	auto closeItem =
+		MenuItemImage::create("MainMenuScreen/QuitButton.png",
+		"MainMenuScreen/QuitButton.png",
+		CC_CALLBACK_1(MainMenu::closeGame, this));
 	//menuTitle->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height - menuTitle->getContentSize().height/2));
 	//playItem->setPosition(Vec2(origin.x + visibleSize.width/2, origin.y + visibleSize.height - 100));
 	bg->setPosition(Vec2(visibleSize.width/2, visibleSize.height/2));
@@ -46,9 +50,9 @@ bool MainMenu::init()
 	bg->setScaleY(visibleSize.height / bg->getContentSize().height);
 	menuTitle->setPosition(Vec2(0, 100));
 	playItem->setPosition(Vec2(0, 0));
-	//background->setPosition(Vec2(100, 100));
+	closeItem->setPosition(Vec2(0, -100));
 
-	auto menu = Menu::create(menuTitle, playItem, NULL);
+	auto menu = Menu::create(menuTitle, playItem, closeItem, NULL);
 
 	//menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
 	this->addChild(bg);
@@ -59,6 +63,12 @@ bool MainMenu::init()
 
 void MainMenu::activateGameScene(Ref *pSender)
 {
-	auto scene = GameScene::createScene();
-	Director::getInstance()->replaceScene(scene);
+	auto scene = Options::createScene();
+	Director::getInstance()->pushScene(scene);
+}
+
+void MainMenu::closeGame(Ref *pSender)
+{
+	auto scene = ConfirmClose::createScene();
+	Director::getInstance()->pushScene(scene);
 }

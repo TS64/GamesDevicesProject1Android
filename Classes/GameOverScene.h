@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 #include "GameScene.h"
+#include "ConfirmQuitScene.h"
 #include "MainMenuScene.h"
 
 class GameOver : public cocos2d::Layer
@@ -15,18 +16,10 @@ public:
     virtual bool init();
     
     // a selector callback
-<<<<<<< HEAD
-    void menuCloseCallback(cocos2d::Ref* pSender);
-=======
-<<<<<<< HEAD
-=======
-    void menuCloseCallback(cocos2d::Ref* pSender);
->>>>>>> 4266d7d8e9b9d3fe75ec8c663c8bf0c002e0c062
->>>>>>> 74f70ad2e7e511ee9da6b306c9310e5294db5989
 
 	void activateGameScene(Ref *pSender);
 
-	void activateMainMenuScene(Ref *pSender);
+	void quitGame(Ref *pSender);
     
     // implement the "static create()" method manually
     CREATE_FUNC(GameOver);

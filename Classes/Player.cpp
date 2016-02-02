@@ -6,7 +6,7 @@ Player::Player() :
 moving(false),
 playerPosition(Vec2(300, 300))
 {
-	createPlayerSprite();
+	//createPlayerSprite();
 }
 
 Sprite * Player::create(Vec2 position)
@@ -28,22 +28,30 @@ void Player::initOptions(Vec2 position)
 	playerPosition = Vec2(300, 300);
 }
 
-void Player::movePlayer(Vec2 pos) {
-	createPlayerSprite();
-	float dotProduct = (((300 + 10 - 300) * (pos.x - 300)) +
-		((300 - 300) * (pos.y - 300)));
-	float A = sqrt(((pos.x - 300) * (pos.x - 300))
-		+ ((pos.y - 300)* (pos.y - 300)));
+void Player::movePlayer(Vec2 pos, float dt) {
+	//createPlayerSprite();
+	float dotProduct = (((40 + 10 - 40) * (pos.x - 40)) +
+		((40 - 40) * (pos.y - 40)));
+	float A = sqrt(((pos.x - 40) * (pos.x - 40))
+		+ ((pos.y - 40)* (pos.y - 40)));
 	float angleInDegree = acos(dotProduct / (10 * A));
-	if (pos.y < 300)
+	if (pos.y < 40)
 		angleInDegree *= -1;
-	if (pos.x != 300 || pos.y != 300)
+	if (pos.x != 40 || pos.y != 40)
 	{
-		playerPosition.x += cos(angleInDegree)*sqrt(((pos.x - 300) * (pos.x - 300)) +
-			((pos.y - 300) * (pos.y - 300))) * 0.2;
-		playerPosition.y += sin(angleInDegree)*sqrt(((pos.x - 300) * (pos.x - 300)) +
-			((pos.y - 300) * (pos.y - 300))) * 0.2;
+		playerPosition.x += cos(angleInDegree)*sqrt(((pos.x - 40) * (pos.x - 40)) +
+			((pos.y - 40) * (pos.y - 40))) * 8 * dt;
+		playerPosition.y += sin(angleInDegree)*sqrt(((pos.x - 40) * (pos.x - 40)) +
+			((pos.y - 40) * (pos.y - 40))) * 8 * dt;
 	}
+	if (playerPosition.x > 755)
+		playerPosition.x = 754;
+	if (playerPosition.x < 49)
+		playerPosition.x = 48;
+	if (playerPosition.y > 555)
+		playerPosition.y = 554;
+	if (playerPosition.y < 125)
+		playerPosition.y = 124;
 }
 
 void Player::rotatePlayer(Vec2 pos)
@@ -52,17 +60,31 @@ void Player::rotatePlayer(Vec2 pos)
 	angleToFace *= (180 / M_PI);
 }
 
-Animate* Player::createPlayerSprite()
+Animate* Player::createPlayerSprite(int i)
 {
-	Vector<SpriteFrame*> animFramesPlayer;
-	animFramesPlayer.reserve(4);
-	animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite1.png", Rect(0, 0, 22, 44)));
-	animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite2.png", Rect(0, 0, 22, 44)));
-	animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite3.png", Rect(0, 0, 22, 44)));
-	animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite2.png", Rect(0, 0, 22, 44)));
-	Animation* playerAnimation = Animation::createWithSpriteFrames(animFramesPlayer, 0.1f);
-	playerAnimate = Animate::create(playerAnimation);
-	return playerAnimate;
+	if (i == 0) {
+		Vector<SpriteFrame*> animFramesPlayer;
+		animFramesPlayer.reserve(4);
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite1.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite2.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite3.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/PlayerSprite2.png", Rect(0, 0, 22, 44)));
+		Animation* playerAnimation = Animation::createWithSpriteFrames(animFramesPlayer, 0.1f);
+		Animate* playerAnimate = Animate::create(playerAnimation);
+		return playerAnimate;
+	}
+	if (i == 1)
+	{
+		Vector<SpriteFrame*> animFramesPlayer;
+		animFramesPlayer.reserve(4);
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/Player2Sprite1.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/Player2Sprite2.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/Player2Sprite3.png", Rect(0, 0, 22, 44)));
+		animFramesPlayer.pushBack(SpriteFrame::create("GameScreen/Player2Sprite2.png", Rect(0, 0, 22, 44)));
+		Animation* playerAnimation = Animation::createWithSpriteFrames(animFramesPlayer, 0.1f);
+		Animate* playerAnimate = Animate::create(playerAnimation);
+		return playerAnimate;
+	}
 }
 
 Vec2 Player::getPlayerPosition() {

@@ -22,7 +22,8 @@ bool QuitMenu::init()
 		//this->addChild(label, 1);
 		return false;
 	}
-
+	auto bg =
+		Sprite::create("MainMenuScreen/BackgroundTemp.jpeg");
 	auto areYouSureItem =
 		MenuItemImage::create("QuitScreen/AreYouSureText.png",
 		"QuitScreen/AreYouSureText.png");
@@ -34,9 +35,13 @@ bool QuitMenu::init()
 		MenuItemImage::create("QuitScreen/NoButton.png",
 		"QuitScreen/NoButton.png",
 		CC_CALLBACK_1(QuitMenu::resume, this));
-	auto menu = Menu::create(areYouSureItem, yesItem, noItem, NULL);
 	Size visibleSize = Director::getInstance()->getVisibleSize();
+	bg->setPosition(Vec2(visibleSize.width / 2, visibleSize.height / 2));
+	bg->setScaleX(visibleSize.width / bg->getContentSize().width);
+	bg->setScaleY(visibleSize.height / bg->getContentSize().height);
+	auto menu = Menu::create(areYouSureItem, yesItem, noItem, NULL);
 	menu->alignItemsVerticallyWithPadding(visibleSize.height / 4);
+	this->addChild(bg);
 	this->addChild(menu);
 
 	return true;

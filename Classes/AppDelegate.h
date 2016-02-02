@@ -2,6 +2,7 @@
 #define  _APP_DELEGATE_H_
 
 #include "cocos2d.h"
+#include "LevelLoader.h"
 
 /**
 @brief    The cocos2d Application.
@@ -34,6 +35,9 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+
+private: // Add  this
+	std::shared_ptr<GameData> m_ptr;
 };
 
 #endif // _APP_DELEGATE_H_
