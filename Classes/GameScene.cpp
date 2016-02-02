@@ -83,10 +83,10 @@ bool GameScene::init()
 		Sprite::create();
 	playerPos = cocos2d::Vec2(300, 300);
 	chestPos = cocos2d::Vec2(400, 350);
-	mummyPos[0] = cocos2d::Vec2(392, 105); mummyVel[0] = Vec2(0, 1.5f);
-	mummyPos[1] = cocos2d::Vec2(33, 350); mummyVel[1] = Vec2(1.5f, 0);
-	mummyPos[2] = cocos2d::Vec2(392, 570); mummyVel[2] = Vec2(0, -1.5f);
-	mummyPos[3] = cocos2d::Vec2(765, 350); mummyVel[3] = Vec2(-1.5f, 0);
+	mummyPos[0] = cocos2d::Vec2(392, 105); mummyVel[0] = Vec2(0, 50.0f);
+	mummyPos[1] = cocos2d::Vec2(33, 350); mummyVel[1] = Vec2(50.0f, 0);
+	mummyPos[2] = cocos2d::Vec2(392, 570); mummyVel[2] = Vec2(0, -50.0f);
+	mummyPos[3] = cocos2d::Vec2(765, 350); mummyVel[3] = Vec2(-50.0f, 0);
 	mummyDirection[0] = 0;
 	mummyDirection[1] = 1;
 	mummyDirection[2] = 2;
@@ -176,10 +176,10 @@ bool GameScene::init()
 		p = rand() % 4;
 		mummyDirection[i] = p;
 
-		if (p == 0) { mummyVel[i] = Vec2(0, 1.5f); mummyPos[i] = Vec2(392, 105); zombiePos[i] = Vec2(392, 105); }
-		if (p == 1) { mummyVel[i] = Vec2(1.5f, 0); mummyPos[i] = Vec2(33, 350); zombiePos[i] = Vec2(30, 350); }
-		if (p == 2) { mummyVel[i] = Vec2(0, -1.5f); mummyPos[i] = Vec2(392, 580); zombiePos[i] = Vec2(392, 580); }
-		if (p == 3) { mummyVel[i] = Vec2(-1.5f, 0); mummyPos[i] = Vec2(765, 350); zombiePos[i] = Vec2(765, 350); }
+		if (p == 0) { mummyVel[i] = Vec2(0, 50.0f); mummyPos[i] = Vec2(392, 105); zombiePos[i] = Vec2(392, 105); }
+		if (p == 1) { mummyVel[i] = Vec2(50.0f, 0); mummyPos[i] = Vec2(33, 350); zombiePos[i] = Vec2(30, 350); }
+		if (p == 2) { mummyVel[i] = Vec2(0, -50.0f); mummyPos[i] = Vec2(392, 580); zombiePos[i] = Vec2(392, 580); }
+		if (p == 3) { mummyVel[i] = Vec2(-50.0f, 0); mummyPos[i] = Vec2(765, 350); zombiePos[i] = Vec2(765, 350); }
 	}
 	for (int i = 0; i < 50; i++)
 	{
@@ -486,11 +486,11 @@ void GameScene::update(float dt)
 	for (int i = 0; i < 50; i++)
 	{
 		//mummySprites[i]->runAction(RepeatForever::create(HandleMummyAnimation(mummyDirection[i])));
-		if (mummyAlive[i] && currentLevel == 1) { mummyPos[i] += mummyVel[i]; }
+		if (mummyAlive[i] && currentLevel == 1) { mummyPos[i] += Vec2(mummyVel[i].x * dt, mummyVel[i].y * dt); }
 		if (currentLevel != 1) { mummyAlive[i] == false; }
 		if (currentLevel != 2) { zombieAlive[i] == false; }
 		if (zombieAlive[i] && currentLevel == 2) { zombiePos[i] += zombieVel[i]; mummyPos[i] = Vec2(-100, -100); }
-		bulletPos[i] += bulletVel[i];
+		bulletPos[i] += Vec2(bulletVel[i].x * dt, bulletVel[i].y * dt);
 		mummySprites[i]->setPosition(mummyPos[i]);
 		zombieSprites[i]->setPosition(zombiePos[i]);
 		coinSprites[i]->setPosition(coinPos[i]);
@@ -655,10 +655,10 @@ bool GameScene::FireBullet(Vec2 pos) {
 		{
 			float distance = sqrt((pos.x - playerPos.x) * (pos.x - playerPos.x) +
 				(pos.y - playerPos.y) * (pos.y - playerPos.y));
-			float bulletVelx = 8*((pos.x - playerPos.x) / distance);
-			float bulletVely = 8*((pos.y - playerPos.y) / distance);
+			float bulletVelx = 0.1*((pos.x - playerPos.x) / distance);
+			float bulletVely = 0.1*((pos.y - playerPos.y) / distance);
 			bulletPos[i] = playerPos + Vec2(bulletVelx * 240, bulletVely * 240);
-			bulletVel[i] = Vec2(bulletVelx * 50, bulletVely * 50);
+			bulletVel[i] = Vec2(bulletVelx * 5000, bulletVely * 5000);
 			bulletAlive[i] = true;
 			bulletFired = true;
 			audio->playEffect("gs.wav");  // play gunshot sound
